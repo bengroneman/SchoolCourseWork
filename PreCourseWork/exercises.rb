@@ -43,4 +43,44 @@ contacts["Joe Smith"][:phone_number] = contact_data[0][2]
 contacts["Sally Johnson"][:email] = contact_data[1][0]
 contacts["Sally Johnson"][:address] = contact_data[1][1]
 contacts["Sally Johnson"][:phone_number] = contact_data[1][2]
+p contacts["Joe Smith"][:email]
+p contacts["Sally Johnson"][:phone_number]
+
+# Use Ruby's Array method delete_if and String method start_with? to delete all of the words that begin with an "s" in the following array.
+arr = ['snow', 'winter', 'ice', 'slippery', 'salted roads', 'white trees']
+
+arr.delete_if { |word| word.downcase.start_with?("s") }
+
+p arr
+
+arr = ['snow', 'winter', 'ice', 'slippery', 'salted roads', 'white trees']
+
+arr.delete_if do |word| 
+  word.downcase.start_with?("s", "w") 
+end
+
+p arr
+
+a = ['white snow', 'winter wonderland', 'melting ice',
+     'slippery sidewalk', 'salted roads', 'white trees']
+
+a2 = a.map { |x| x.split(' ')}
+p a2.flatten!
+p a2
+
+contact_data = [["joe@email.com", "123 Main st.", "555-123-4567"],
+            ["sally@email.com", "404 Not Found Dr.", "123-234-3454"]]
+
+contacts = {"Joe Smith" => {}, "Sally Johnson" => {}}
+
+contacts.each do |contact|
+  contact[:email] = contact_data.first
+  contact_data.shift!
+  contact[:address] = contact_data.first
+  contact_data.shift!
+  contact[:phone_number] = contact_data.first
+  contact_data.shift!
+end
 p contacts
+
+

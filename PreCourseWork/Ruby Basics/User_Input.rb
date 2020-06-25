@@ -1,4 +1,37 @@
 # Opposites attract
+def valid_number?(number_str)
+  number_str.to_i.to_s == number_str && number_str.to_i != 0
+end
+
+def add(num1, num2)
+  num1.to_i + num2.to_i
+end
+
+loop do
+  puts "Please enter a positive or negative integer:"
+  int1 = gets.chomp
+
+  puts "Please enter a positive or negative integer:"
+  int2 = gets.chomp
+
+  if !valid_number?(int1) or !valid_number?(int2)
+    puts "Invalid numbers. Only non-zero integers allowed. Try again"
+    next
+  end
+
+  if int1.to_i > 0 && int2.to_i > 0
+    puts "You must enter a negative integer as well. Try again"
+    next
+  elsif int1.to_i < 0 && int2.to_i < 0
+    puts "You must enter a postive integer as well. Try again"
+    next
+  end
+
+  answer = add(int1, int2)
+  puts "#{int1} + #{int2} is equal to #{answer}"
+  break
+end
+
 
 
 def printer()
@@ -18,15 +51,6 @@ def printer()
 end
 
 printer()
-
-
-
-
-
-
-def valid_number?(number_str)
-  number_str.to_i.to_s == number_str
-end
 
 def divide(num, den)
   num.to_i / den.to_i

@@ -28,3 +28,9 @@ end
 
 p numbers
 
+arr = ['Dave', 7, 'Miranda', 3, 'Jason', 11]
+
+arr2 = [['Dave', 7], ['Miranda', 3], ['Jason', 11]]
+
+flat_favs = arr2.flatten
+p flat_favs

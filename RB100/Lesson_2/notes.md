@@ -29,6 +29,64 @@ for int in array do
 
 return new_array
 
+# Debugging
+Use Pry!
+```
+require "pry"
+
+counter = 0
+
+loop do
+  counter += 1
+  binding.pry
+  break if counter === 5
+end
+```
+
+## Order of precedence
+Reference: [documentation]('https://ruby-doc.org/core-2.6.3/doc/syntax/precedence_rdoc.html')
+```
+p array.map { |num| num + 1 }      #  outputs [2, 3, 4]
+                                   #  => [2, 3, 4]
+```
+
+*Blocks have the lowest precedence of all operators*
+```
+p array.map do |num|
+  num + 1                   #  outputs #<Enumerator: [1, 2, 3]:map>
+end                           #  => #<Enumerator: [1, 2, 3]:map>
+```
+Using a `{}` block carries higher precedence, thus leading to the following:
+```
+array = [1, 2, 3]
+
+p(array.map) do |num|
+  num + 1                           #  <Enumerator: [1, 2, 3]:map>
+end                                 #  => <Enumerator: [1, 2, 3]:map>
+
+p(array.map { |num| num + 1 })      # [2, 3, 4]
+                                    # => [2, 3, 4]
+```
+Neat!
+
+### Takeaways
+Ruby evaluates expressions based on the level of precedence of the operators involved.
+To override the default, use parentheses.
+
+## *Tap* Object Instance Method
+Simple usage
+```
+mapped_array = array.map { |num| num + 1 }
+
+mapped_array.tap { |value| p value }              # => [2, 3, 4]
+```
+Debugging usage
+```
+(1..10)                 .tap { |x| p x }   # 1..10
+ .to_a                  .tap { |x| p x }   # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+ .select {|x| x.even? } .tap { |x| p x }   # [2, 4, 6, 8, 10]
+ .map {|x| x*x }        .tap { |x| p x }   # [4, 16, 36, 64, 100]
+```
 
 
 

@@ -87,6 +87,3 @@ Debugging usage
  .select {|x| x.even? } .tap { |x| p x }   # [2, 4, 6, 8, 10]
  .map {|x| x*x }        .tap { |x| p x }   # [4, 16, 36, 64, 100]
 ```
-
-
-

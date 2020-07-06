@@ -87,3 +87,32 @@ Debugging usage
  .select {|x| x.even? } .tap { |x| p x }   # [2, 4, 6, 8, 10]
  .map {|x| x*x }        .tap { |x| p x }   # [4, 16, 36, 64, 100]
 ```
+
+## Mortgage Calculator
+### Goal:
+To build an interactive CLI interface for calculating mortgage payments
+### Input:
+  - loan_amount   = Number
+    - Number should be valid
+  - APR           = Float
+    - Number should be validated  and stripped
+  - loan_duration = Time
+    - should be able to handle years and months
+### Output:
+  - monthly_interest_rate   = Float
+  - loan_duration_in_months = Time
+  - monthly_payment         = Number
+
+### Test cases:
+  - https://www.calculator.net/loan-calculator.html
+  - to_decimal("4.02") => .0402
+
+## Algorithm:
+  # m = p * (j / (1 - (1 + j)**(-n)))
+    # m = monthly payment
+    # p = loan amount
+    # j = monthly interest rate
+    # n = loan duration in months
+## Notes:
+# If you're working with Annual Percentage Rate (APR),
+# you'll need to convert that to a monthly interest rate.

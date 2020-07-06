@@ -1,9 +1,0 @@
-{
-  "application_name": "Mortgage Calculator",
-  "prompts": [
-    "loan_amount": {
-      "info": "How big of a loan are you looking to take out?",
-      "error": "Whoops that number isn't valid, try entering the loan amount again (e.g. 100000)"
-    }
-  ]
-}

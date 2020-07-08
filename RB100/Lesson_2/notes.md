@@ -116,3 +116,82 @@ To build an interactive CLI interface for calculating mortgage payments
 ## Notes:
 # If you're working with Annual Percentage Rate (APR),
 # you'll need to convert that to a monthly interest rate.
+
+
+## Coding Tips
+
+Don't display something to the output and return a meaningful value.
+Since Ruby always returns a value, the key here is that the return value shouldn't be the intent of the method.
+
+Decide whether the method should return a value with no side effects or perform side effects with no return value.
+If you do both, you probably won't remember what the method does when you need to use it.
+The method name should reflect whether it has side effects or not (for example, some methods in the standard Ruby library end with a ! when the method has side effects).
+
+**In Ruby, everything is truthy except nil and false.**
+
+## Variable Scope
+
+Aha! The constant syntax does make a difference!
+Constants are said to have a *lexical scope*
+```
+loop do
+  MY_TEAM = "Phoenix Suns"
+  break
+end
+
+puts MY_TEAM    # => Phoenix Suns
+```
+
+## Blocks!
+Ahhhh, I see, if we ever want to attach a lambda function to a function to extend its functionality we can declare blocks with **yield**.
+```
+def greetings
+  yield
+  puts "Goodbye"
+end
+
+word = "Hello"
+
+greetings do
+  puts word
+end
+
+# Outputs 'Hello'
+# Outputs 'Goodbye'
+```
+
+## Pass by Reference vs Pass by Value
+**when an operation within the method mutates the caller, it will affect the original object**
+
+# Ruby Mutations
+---
+**Use `#object_id` to help debug why you are receiving an unexpected value.
+
+> Setter methods for class instance variables and indexed assignment are not the same as assignment. We’ll return to this below, but for now, remember that setter methods and indexed assignment usually mutate the calling object.
+    
+
+## Mutable methods
+
+> A method is said to be mutating with respect to an argument or its caller if it modifies it.
+
+
+## Object passing
+
+```
+def increment(x)
+  x << 'b'
+end
+
+y = 'a'
+increment(y)
+puts y
+```
+Hypothetically, if ruby is pass by value, this code print a. The reason for this is that a *pass by value* strategy creates a copy of y before passing it to *#increment* has only a copy of y, it can't actually modify `y`.
+
+However, if ruby is **pass by reference**, this code print *ab*. Here, ruby passes a reference to *y* to *#increment*, so *x* become an alias for *y*. When you modify *x*, you also modify the aliased object *y*.
+
+
+## Closing thoughts
+> **pass by reference value** is probably the most accurate answer, but it’s a hard answer to swallow when learning ruby, and isn’t particularly helpful when trying to decide what will happen if a method modifies an argument – at least not until you fully understand it.
+> **pass by reference** is accurate so long as you account for assignment and immutability.
+> Ruby acts like **pass by value** for immutable objects, pass by reference for mutable objects is a reasonable answer when learning about ruby, so long as you keep in mind that ruby only appears to act like this.

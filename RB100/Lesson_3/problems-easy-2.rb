@@ -19,5 +19,5 @@ advice = advice.slice!(advice.index("house")..advice.length)
 p advice
 
 # I really found this excercise to be helpful.
-# It demonstrates how using a mutating method such as *slice!* -- 
-# will result in a return value that is different from the mutated state of the caller 
+# It demonstrates how using a mutating method such as *slice!* --
+# will result in a return value that is different from the mutated state of the caller

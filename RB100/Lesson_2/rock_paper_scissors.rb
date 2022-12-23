@@ -18,7 +18,7 @@ end
 def ask(question)
   puts question
 
-  gets.chomp 
+  gets.chomp
 end
 
 def get_random_move(moves)
@@ -31,9 +31,9 @@ def get_player_moves(config)
   options = config.map { |move| move[:name] }
   player_selection = CLI::UI.ask('What is your move?', options: options)
 
-  player_move = config.filter { |move| move[:name] == player_selection } 
-  ai_move = config.sample 
-  return [player_move, ai_move].flatten
+  player_move = config.filter { |move| move[:name] == player_selection }
+  ai_move = config.sample
+  [player_move, ai_move].flatten
 end
 
 def determine_winner(moves)
@@ -49,7 +49,7 @@ def determine_winner(moves)
   end
 end
 
-def rock_paper_shotgun()
+def rock_paper_shotgun
   CLI::UI::Frame.open('Rock Paper Scissors') do
     say "Hello, and welcome to Rock, Paper, Scissors"
     # TODO: get this config from a yaml file
@@ -69,7 +69,7 @@ def rock_paper_shotgun()
         internal_name: "scissor",
         destroys: "paper"
       }
-    ] 
+    ]
     CLI::UI::Frame.open('Game Panel') do
       loop do
         moves = get_player_moves(rps_config).flatten()

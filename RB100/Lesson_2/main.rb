@@ -3,12 +3,10 @@ def prompt(msg)
 end
 
 def valid_number?(number_str)
-  begin
-    Integer(number_str)
-    return true
-  rescue ArgumentError
-    return false
-  end
+  Integer(number_str)
+  true
+rescue ArgumentError
+  false
 end
 
 def get_math_operation_type
@@ -31,7 +29,7 @@ def calculator
   operation_type = get_math_operation_type()
   nums = get_nums()
   perform_calculation(operation_type, nums)
-  
+
   prompt("Do you want to go calculate another thing (y or n)?")
   answer = gets.chomp
   if answer.downcase().start_with?('y')
@@ -44,7 +42,7 @@ end
 def perform_calculation(op_type, nums)
   # TODO: Allow this to  more than 2 nums
   # TODO: Find a way to loop through a hash so that we can use the commands read from a file
-        # This would also mean we should hoist this config file to calculator for better reuse
+  # This would also mean we should hoist this config file to calculator for better reuse
   # EXAMPLE:
   # commands = {m: {name: 'multiply', operation_symbol: '*'}}
   case op_type

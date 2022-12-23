@@ -14,11 +14,12 @@ p hash_flintstones
 # 2
 # Prompt: Add up all of the ages from the Munster family hash:
 
-ages = { "Herman" => 32, "Lily" => 30, "Grandpa" => 5843, "Eddie" => 10, "Marilyn" => 22, "Spot" => 237 }
+ages = { "Herman" => 32, "Lily" => 30, "Grandpa" => 5843, "Eddie" => 10,
+         "Marilyn" => 22, "Spot" => 237 }
 
 total_ages = 0
 
-ages.each do |name, age|
+ages.each do |_name, age|
   total_ages += age
 end
 
@@ -27,7 +28,7 @@ p total_ages
 # 3
 # Prompt in the same age hash, remove people with age 100 or greater
 
-ages.select! do |k, v|
+ages.select! do |_k, v|
   v < 100
 end
 
@@ -39,7 +40,8 @@ p ages
 # 4
 # Prompt: Pick out the minimum age from our current Munster family hash:
 
-people = { "Herman" => 32, "Lily" => 30, "Grandpa" => 5843, "Eddie" => 10, "Marilyn" => 22, "Spot" => 237 }
+people = { "Herman" => 32, "Lily" => 30, "Grandpa" => 5843, "Eddie" => 10,
+           "Marilyn" => 22, "Spot" => 237 }
 
 ages = people.values
 min = ages.min
@@ -87,37 +89,37 @@ def titleize(sentence)
   titleized = sentence.split.map do |word|
     word.capitalize
   end
-  return titleized.join(" ")
+  titleized.join(" ")
 end
 
 p titleize("jc penney is really cool")
 
- # 10
- # Prompt:
- # Given the has below
+# 10
+# Prompt:
+# Given the has below
 munsters = {
   "Herman" => { "age" => 32, "gender" => "male" },
   "Lily" => { "age" => 30, "gender" => "female" },
   "Grandpa" => { "age" => 402, "gender" => "male" },
   "Eddie" => { "age" => 10, "gender" => "male" },
-  "Marilyn" => { "age" => 23, "gender" => "female"}
+  "Marilyn" => { "age" => 23, "gender" => "female" }
 }
- # Modify the hash such that each member of the Munster family has an additional "age_group" key that has one of three values describing
- # the age group the family member is in (kid, adult, or senior). Your solution should produce the hash below
+# Modify the hash such that each member of the Munster family has an additional "age_group" key that has one of three values describing
+# the age group the family member is in (kid, adult, or senior). Your solution should produce the hash below
 
 { "Herman" => { "age" => 32, "gender" => "male", "age_group" => "adult" },
-  "Lily" => {"age" => 30, "gender" => "female", "age_group" => "adult" },
+  "Lily" => { "age" => 30, "gender" => "female", "age_group" => "adult" },
   "Grandpa" => { "age" => 402, "gender" => "male", "age_group" => "senior" },
   "Eddie" => { "age" => 10, "gender" => "male", "age_group" => "kid" },
   "Marilyn" => { "age" => 23, "gender" => "female", "age_group" => "adult" } }
 
 munsters.each do |name, props|
   case props["age"]
-  when 1..17 
+  when 1..17
     props[:age_group] = "kid"
   when 18..64
     props[:age_group] = "adult"
-  when 65..1000 
+  when 65..1000
     props[:age_group] = "senior"
   else
     puts "invalid age #{props[:age]} for #{name}"

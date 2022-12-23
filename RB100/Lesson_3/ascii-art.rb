@@ -1,6 +1,6 @@
 require "pry"
 # 1.
-10.times { |num| puts (" " * num) + "Test"}
+10.times { |num| puts (" " * num) + "Test" }
 
 # 3.
 def factors(number)
@@ -19,9 +19,9 @@ def factors(number)
   factors
 end
 
-# || 
+# ||
 
-while divisor > 0 do
+while divisor > 0
   factors << number / divisor if number % divisor == 0
   divisor -= 1
 end
